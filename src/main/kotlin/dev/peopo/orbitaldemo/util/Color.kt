@@ -1,4 +1,4 @@
-package dev.peopo.wandererworlds.util
+package dev.peopo.orbitaldemo.util
 
 import org.bukkit.ChatColor
 import java.util.regex.Matcher

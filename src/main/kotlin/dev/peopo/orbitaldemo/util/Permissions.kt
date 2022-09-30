@@ -1,4 +1,4 @@
 package dev.peopo.orbitaldemo.util
 
-enum class Permissions {
+enum class Permissions(val permission: String) {
 }

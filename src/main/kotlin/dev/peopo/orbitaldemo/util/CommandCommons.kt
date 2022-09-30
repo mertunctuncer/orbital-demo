@@ -1,9 +1,7 @@
-package dev.peopo.wandererworlds.util
+package dev.peopo.orbitaldemo.util
 
-import dev.peopo.wandererworlds.config.messages.Messages
-import dev.peopo.wandererworlds.messages
+import dev.peopo.orbitaldemo.config.Messages
 import org.bukkit.entity.Player
-
 
 fun Player.checkPermission(permission: Permissions) : Boolean?{
 	if(!player?.hasPermission(permission.permission)!!) {
