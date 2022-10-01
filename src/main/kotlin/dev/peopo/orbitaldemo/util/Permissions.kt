@@ -14,7 +14,7 @@ enum class Permissions(val permission: String) {
 	BALANCE_SELF("economy.balance.self"),
 	BALANCE_OTHER("economy.balance.other"),
 	EARN("economy.earn"),
-	GIVE("economy.give")
+	GIVE("economy.give"),
 }
 
 val permissionsEnabled by lazy { config.getBoolean("use_permissions") }

@@ -57,6 +57,7 @@ object GiveCommand : TabExecutor {
 
 					sender.sendColorizedMessage(Messages.GIVE_SUCCESSFUL) {
 						return@sendColorizedMessage it
+							.replace("{player}", userToGive.name)
 							.replace("{balance}", currency.format(Economy.getBalance(sender.uniqueId)!!))
 							.replace("{symbol}", currency.symbol)
 							.replace("{amount}", currency.format(amount))
@@ -65,6 +66,7 @@ object GiveCommand : TabExecutor {
 
 					userToGive.sendColorizedMessage(Messages.GIVE_RECEIVED) {
 						return@sendColorizedMessage it
+							.replace("{player}", sender.name)
 							.replace("{balance}", currency.format(Economy.getBalance(userToGive.uniqueId)!!))
 							.replace("{symbol}", currency.symbol)
 							.replace("{amount}", currency.format(amount))
