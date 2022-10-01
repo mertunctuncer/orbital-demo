@@ -14,7 +14,7 @@ import dev.peopo.orbitaldemo.config.Messages
 import org.bukkit.entity.Player
 
 fun Player.checkPermission(permission: Permissions) : Boolean?{
-	if(!permissionsEnabled && !player?.hasPermission(permission.permission)!!) {
+	if(permissionsEnabled && !player?.hasPermission(permission.permission)!!) {
 		player?.sendMessage(messages.getColorized(Messages.NO_PERMISSION))
 		return null
 	}
@@ -31,8 +31,8 @@ fun Player.checkOP() : Boolean? {
 
 fun Player.sendColorizedMessage(message: Messages) = this.sendMessage(messages.getColorized(message))
 
-fun Player.sendColorizedMessage(message: Messages, transform: (message: String) -> String) : String {
+fun Player.sendColorizedMessage(message: Messages, transform: (message: String) -> String) {
 	val transformedMessage = transform(messages.getMessage(message))
-	return transformedMessage.colorize()
+	this.sendMessage(transformedMessage.colorize())
 }
 
