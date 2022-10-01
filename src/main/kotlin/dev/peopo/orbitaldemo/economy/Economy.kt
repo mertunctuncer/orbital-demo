@@ -1,9 +1,21 @@
 package dev.peopo.orbitaldemo.economy
 
+import dev.peopo.orbitaldemo.economy.currency.CurrencyFormat
 import dev.peopo.orbitaldemo.economy.exception.InsufficientBalanceException
 import dev.peopo.orbitaldemo.economy.exception.PlayerNotOnlineException
+import dev.peopo.orbitaldemo.util.config
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
+
+
+val currency: CurrencyFormat by lazy {
+	CurrencyFormat(
+		config.getString("currency.name")!!,
+		config.getString("currency.symbol")!!,
+		config.getString("currency.format")!!,
+		config.getBoolean("currency.collapse")
+	)
+}
 
 object Economy {
 
