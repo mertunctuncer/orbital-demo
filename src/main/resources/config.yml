@@ -1,0 +1,9 @@
+sql:
+  host: "localhost"
+  port: 5432
+  database: "database"
+  username: "postgres"
+  password: "password"
+  pool_size: 3
+
+initial_balance: 100.0
