@@ -1,0 +1,21 @@
+no_permission: "&cYou don't have permission to use this command."
+player_not_online: "&cPlayer is not online."
+invalid_amount: "&cInvalid amount: Please enter a &fpositive &cnumber."
+not_enough_balance: "&cYou don't have enough balance."
+balance_missing: "&cBalance is not loaded. Please try again!"
+
+balance_self: "&3Your balance in &f{currency_name} &3is &f{symbol}{balance}&3."
+balance_other: "&3Balance of &f{player} &3is &f{symbol}{balance}&3."
+balance_usage: "&cWrong Usage > &f/balance [player]"
+
+earn_successful: "&3Earned &f{symbol}&f{amount}&3. Your new balance is &f{symbol}{balance}&3."
+earn_cooldown: "&cWait &f{time_left} &cto use this command again."
+earn_usage: "&cWrong Usage > &f/earn"
+
+give_successful: "&3Sent &f{symbol}&f{amount} &3to &f{player}&3."
+give_received: "&3Received &f{symbol}&f{amount} &3from &f{player}&3."
+give_usage: "&cWrong Usage > &f/give <player> <amount>"
+
+set_successful: "&f{player}&3's balance is now &f{symbol}&f{amount}&3."
+set_received: "&3Your balance has been set to &f{symbol}&f{amount} &3by &f{player}&3."
+set_usage: "&cWrong Usage > &f/set <player> <amount>"
