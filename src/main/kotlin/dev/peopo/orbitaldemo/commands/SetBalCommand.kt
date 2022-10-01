@@ -72,11 +72,13 @@ object SetBalCommand : TabExecutor {
 					sender.sendColorizedMessage(Messages.PLAYER_NOT_ONLINE)
 				}
 			}
-			else -> sender.sendColorizedMessage(Messages.BALANCE_USAGE)
+			else -> sender.sendColorizedMessage(Messages.SET_USAGE)
 		}
 		return true
 	}
-	override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String>? {
-		TODO("Not yet implemented")
+	override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>): MutableList<String>? = when (args.size) {
+		1 -> Bukkit.getOnlinePlayers().map { it.name }.toMutableList()
+		2 -> mutableListOf("amount")
+		else -> null
 	}
 }
