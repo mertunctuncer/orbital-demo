@@ -2,6 +2,7 @@ package dev.peopo.orbitaldemo.commands
 
 import dev.peopo.orbitaldemo.config.Messages
 import dev.peopo.orbitaldemo.economy.Economy
+import dev.peopo.orbitaldemo.economy.currency
 import dev.peopo.orbitaldemo.util.*
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
@@ -26,7 +27,7 @@ object BalCommand : TabExecutor {
 				}
 				sender.sendColorizedMessage(Messages.BALANCE_SELF) {
 					return@sendColorizedMessage it
-						.replace("{balance}", balance.toString())
+						.replace("{balance}", currency.format(balance))
 				}
 			}
 			1 -> {
@@ -41,7 +42,7 @@ object BalCommand : TabExecutor {
 
 				sender.sendColorizedMessage(Messages.BALANCE_OTHER) {
 					return@sendColorizedMessage it
-						.replace("{balance}", balance.toString())
+						.replace("{balance}", currency.format(balance))
 						.replace("{player}", userToCheck.name)
 				}
 			}
