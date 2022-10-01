@@ -62,7 +62,7 @@ object EarnCommand : TabExecutor{
 					return@sendColorizedMessage it
 						.replace("{balance}", currency.format(balance!!))
 						.replace("{symbol}", currency.symbol)
-						.replace("{earned}", currency.format(amount.toDouble()))
+						.replace("{amount}", currency.format(amount.toDouble()))
 						.replace("{currency_name}", currency.displayName)
 				}
 			}
