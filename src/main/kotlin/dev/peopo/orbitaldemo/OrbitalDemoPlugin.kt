@@ -12,6 +12,7 @@ package dev.peopo.orbitaldemo
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import dev.peopo.bukkitscope.coroutine.DefaultScope
 import dev.peopo.orbitaldemo.commands.BalCommand
 import dev.peopo.orbitaldemo.commands.EarnCommand
 import dev.peopo.orbitaldemo.commands.GiveCommand
@@ -20,6 +21,7 @@ import dev.peopo.orbitaldemo.sql.EconomyData
 import dev.peopo.orbitaldemo.sql.JoinLeaveListener
 import dev.peopo.orbitaldemo.util.*
 import dev.peopo.skuerrel.Table
+import kotlinx.coroutines.launch
 import org.bukkit.plugin.java.JavaPlugin
 
 
@@ -27,6 +29,7 @@ import org.bukkit.plugin.java.JavaPlugin
 class OrbitalDemoPlugin : JavaPlugin() {
 	override fun onEnable() {
 		if (!plugin.hasDependencies()) this.disable()
+		DefaultScope.launch { sqlTable.create() }
 		registerCommands()
 		registerListeners()
 	}
