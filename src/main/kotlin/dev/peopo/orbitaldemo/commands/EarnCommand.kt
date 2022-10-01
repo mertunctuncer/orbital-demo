@@ -46,7 +46,7 @@ object EarnCommand : TabExecutor{
 				if (lastUsage != null && System.currentTimeMillis() < lastUsage + COOLDOWN) {
 					sender.sendColorizedMessage(Messages.EARN_COOLDOWN) {
 						return@sendColorizedMessage it
-							.replace("{time_left}", "${(lastUsage + COOLDOWN) / 1000L} second(s)")
+							.replace("{time_left}", "${(lastUsage + COOLDOWN - System.currentTimeMillis()) / 1000L} second(s)")
 					}
 					return true
 				}
