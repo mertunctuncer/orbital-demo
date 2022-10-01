@@ -13,7 +13,6 @@ private const val TRILLION_REAL = 1_000_000_000_000.0
 
 class CurrencyFormat(
     val displayName: String,
-    val pluralDisplayName : String,
     val symbol: String,
     pattern: String = "###,###,###,###,###,###,###,###.00",
     private val collapse : Boolean = true,
