@@ -30,7 +30,7 @@ dependencies {
     paperDevBundle("1.18.2-R0.1-SNAPSHOT")
 
     implementation("com.github.mertunctuncer:bukkit-scope:1.0.0")
-    implementation("com.github.mertunctuncer:skuerrel:1.2.0")
+    implementation("com.github.mertunctuncer:skuerrel:1.3.0")
     implementation("org.postgresql:postgresql:42.5.0")
 
     implementation("com.zaxxer:HikariCP:4.0.3")
@@ -97,7 +97,7 @@ bukkit {
     description = project.description
     apiVersion = "1.18"
     authors = listOf("Aki..#0001")
-    depend = listOf("")
+    depend = listOf()
     commands {
         register("bal")
         register("give")
