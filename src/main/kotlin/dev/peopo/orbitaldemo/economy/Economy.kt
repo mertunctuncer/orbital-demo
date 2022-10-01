@@ -32,4 +32,6 @@ object Economy {
 		val current = balances[uuid]?: throw PlayerNotOnlineException("Balance is not cached")
 		return current > amount
 	}
+
+	fun unloadBalance(uuid: UUID) = balances.remove(uuid)
 }
