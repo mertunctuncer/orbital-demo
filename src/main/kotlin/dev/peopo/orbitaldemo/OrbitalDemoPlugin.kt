@@ -13,6 +13,7 @@ package dev.peopo.orbitaldemo
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import dev.peopo.orbitaldemo.commands.BalCommand
+import dev.peopo.orbitaldemo.commands.EarnCommand
 import dev.peopo.orbitaldemo.sql.EconomyData
 import dev.peopo.orbitaldemo.sql.JoinLeaveListener
 import dev.peopo.orbitaldemo.util.*
@@ -34,7 +35,7 @@ class OrbitalDemoPlugin : JavaPlugin() {
 		getCommand("bal")?.setExecutor(BalCommand)
 		getCommand("give")
 		getCommand("setbal")
-		getCommand("earn")
+		getCommand("earn")?.setExecutor(EarnCommand)
 	}
 
 	private fun registerListeners() {
