@@ -1,4 +1,9 @@
 
+# Placeholders:
+# {player}
+# {symbol}
+# {balance}
+# {currency_name}
 
 sql:
   host: "localhost"

@@ -28,6 +28,8 @@ object BalCommand : TabExecutor {
 				sender.sendColorizedMessage(Messages.BALANCE_SELF) {
 					return@sendColorizedMessage it
 						.replace("{balance}", currency.format(balance))
+						.replace("{symbol}", currency.symbol)
+						.replace("{currency_name}", currency.displayName)
 				}
 			}
 			1 -> {
@@ -43,6 +45,8 @@ object BalCommand : TabExecutor {
 				sender.sendColorizedMessage(Messages.BALANCE_OTHER) {
 					return@sendColorizedMessage it
 						.replace("{balance}", currency.format(balance))
+						.replace("{symbol}", currency.symbol)
+						.replace("{currency_name}", currency.displayName)
 						.replace("{player}", userToCheck.name)
 				}
 			}
