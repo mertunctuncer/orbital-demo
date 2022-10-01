@@ -4,6 +4,8 @@
 # {symbol}
 # {balance}
 # {currency_name}
+# {time_left}
+# {earned}
 
 sql:
   host: "localhost"

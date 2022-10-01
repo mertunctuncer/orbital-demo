@@ -10,5 +10,68 @@
 
 package dev.peopo.orbitaldemo.commands
 
-object EarnCommand {
+import dev.peopo.orbitaldemo.config.Messages
+import dev.peopo.orbitaldemo.economy.Economy
+import dev.peopo.orbitaldemo.economy.currency
+import dev.peopo.orbitaldemo.util.Permissions
+import dev.peopo.orbitaldemo.util.checkPermission
+import dev.peopo.orbitaldemo.util.sendColorizedMessage
+import org.bukkit.command.Command
+import org.bukkit.command.CommandSender
+import org.bukkit.command.TabExecutor
+import org.bukkit.entity.Player
+import java.util.*
+import kotlin.random.Random
+
+object EarnCommand : TabExecutor{
+
+	private val lastUsages = mutableMapOf<UUID, Long>()
+	private const val COOLDOWN = 1000L * 60L
+
+	override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+		if (sender !is Player) {
+			sender.sendMessage("This command can only be used by players.")
+			return true
+		}
+
+		when (args.size) {
+			0 -> {
+				sender.checkPermission(Permissions.EARN) ?: return true
+				Economy.getBalance(sender.uniqueId) ?: run {
+					sender.sendColorizedMessage(Messages.BALANCE_MISSING)
+					return true
+				}
+
+				val lastUsage = this.lastUsages[sender.uniqueId]
+				if (lastUsage != null && System.currentTimeMillis() < lastUsage + COOLDOWN) {
+					sender.sendColorizedMessage(Messages.EARN_COOLDOWN) {
+						return@sendColorizedMessage it
+							.replace("{time_left}", "${(lastUsage + COOLDOWN) / 1000L} second(s)")
+					}
+					return true
+				}
+
+				lastUsages[sender.uniqueId] = System.currentTimeMillis()
+
+				val amount = Random.nextInt(1, 6)
+
+				Economy.depositBalance(sender.uniqueId, amount.toDouble())
+				val balance = Economy.getBalance(sender.uniqueId)
+
+				sender.sendColorizedMessage(Messages.EARN_SUCCESSFUL) {
+					return@sendColorizedMessage it
+						.replace("{balance}", currency.format(balance!!))
+						.replace("{symbol}", currency.symbol)
+						.replace("{earned}", currency.format(amount.toDouble()))
+						.replace("{currency_name}", currency.displayName)
+				}
+			}
+
+			else -> sender.sendColorizedMessage(Messages.EARN_USAGE)
+		}
+		return true
+	}
+
+	override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String>? = null
+
 }
