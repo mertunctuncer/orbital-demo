@@ -79,7 +79,7 @@ object GiveCommand : TabExecutor {
 				}
 
 			}
-			else -> sender.sendColorizedMessage(Messages.BALANCE_USAGE)
+			else -> sender.sendColorizedMessage(Messages.GIVE_USAGE)
 		}
 		return true
 	}
